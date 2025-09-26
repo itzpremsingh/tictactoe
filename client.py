@@ -1,7 +1,8 @@
 from socket import AF_INET, SOCK_STREAM
 
 from common import Char, Code
-from config import HOST, PORT
+
+# from config import HOST, PORT
 from helper import (
     decoder,
     display_game_board,
@@ -144,7 +145,7 @@ def main_game(server: socket) -> None:
         first_turn = not first_turn
 
 
-def client_handler() -> None:
+def client_handler(HOST: str = "127.0.0.1", PORT: int = 8000) -> None:
     server = socket(AF_INET, SOCK_STREAM)
     server.connect((HOST, PORT))
 
