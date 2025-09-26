@@ -20,8 +20,13 @@ A simple command line based Tic Tac Toe game written in Python.
 ## How to use
 
 1.  Run the script
-2.  Type 'server' to start the server(python main.py server)
-3.  Type 'client' to start the client(python main.py client)
+
+```
+python main.py [server|client] [host] [port]
+```
+
+2.  Type 'server' to start the server
+3.  Type 'client' to start the client
 4.  The server will automatically accept incoming connections
 5.  The client will automatically connect to the server
 6.  The game will automatically start and end
