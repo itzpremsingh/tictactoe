@@ -115,6 +115,8 @@ def server_starter(server: socket) -> None:
             TimeoutError,
         ):
             print("Server closed")
+
+        finally:
             server.shutdown(0)
             quit(0)
 
