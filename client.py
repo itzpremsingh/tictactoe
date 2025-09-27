@@ -2,7 +2,6 @@ from socket import AF_INET, SOCK_STREAM
 
 from common import Char, Code
 
-# from config import HOST, PORT
 from helper import (
     decoder,
     display_game_board,
