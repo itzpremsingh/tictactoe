@@ -1,7 +1,6 @@
 from socket import AF_INET, SOCK_STREAM
 
 from common import Char, Code
-
 from helper import (
     decoder,
     display_game_board,
@@ -27,7 +26,12 @@ class Turn:
             return -1
 
         print("## Your turn")
-        position = int_input("Enter position: ") - 1
+        try:
+            position = int_input("Enter position: ") - 1
+
+        except (KeyboardInterrupt, EOFError):
+            self.server.sendall(encoder({Code.MATCH_CODE: Char.MATCH_LEFT_CODE}))
+            return -1
 
         if position not in {0, 1, 2, 3, 4, 5, 6, 7, 8}:
             print("## Position must be in 1-9")
@@ -70,7 +74,12 @@ class Turn:
 
     def friend_turn(self) -> None:
         print("## Friend turn ...")
-        position: int = decoder(self.server.recv(1024))[Code.MOVE_CODE]
+        data = decoder(self.server.recv(1024))
+        if data[Code.MATCH_CODE] == Char.MATCH_LEFT_CODE:
+            print("Friend left the game")
+            exit(0)
+
+        position: int = data[Code.MOVE_CODE]
 
         print(f"Friend position {position + 1}")
 

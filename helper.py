@@ -114,11 +114,9 @@ def server_starter(server: socket) -> None:
             ConnectionError,
             TimeoutError,
         ):
-            print("Server closed")
-
-        finally:
-            server.shutdown(0)
-            quit(0)
+            print("Error while waiting for client")
+            server.close()
+            break
 
         if waiting_client is None:
             waiting_client = client

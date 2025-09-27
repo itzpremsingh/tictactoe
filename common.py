@@ -15,6 +15,7 @@ class Char:
     MATCH_LOSS_CHAR = "LOSS"
     MATCH_DRAW_CHAR = "DRAW"
     MATCH_NORMAL_CHAR = "NORMAL"
+    MATCH_LEFT_CODE = "LEFT"
 
 
 won_conditions = [
